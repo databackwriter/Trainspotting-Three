@@ -81,7 +81,7 @@ rules2 = rules[ (rules['lift'] >= 2.0) &
 
 #import association rules to SQL
 import pyodbc
-conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a', autocommit=True)
+conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword', autocommit=True)
 crsr = conn.cursor()
 crsr.execute("DELETE FROM dbo.tblRuleAsssociationxRulePrecedent")
 crsr.execute("DELETE FROM dbo.tblRuleAsssociation")

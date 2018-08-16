@@ -13,7 +13,7 @@ import pyodbc
 
 
 #¢the DSN value should be the name of the entry in odbc.ini, not freetds.conf
-conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a',autocommit=True)
+conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword',autocommit=True)
 crsr = conn.cursor()
 #rows = crsr.execute("use movies")
 #rows = crsr.execute("CREATE TABLE tbl2(MyID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, MyVal VARCHAR(50))")
@@ -25,7 +25,7 @@ conn.close()
 #
 import sqlalchemy
 
-engine = sqlalchemy.create_engine("mssql+pyodbc://sa:l00katy0urd%t%a@MYMSSQL_Movies")
+engine = sqlalchemy.create_engine("mssql+pyodbc://sa:notapassword@MYMSSQL_Movies")
 
 import pandas as pd
 import numpy as np
@@ -35,7 +35,7 @@ df.head
 df.to_sql(name="test", con = engine, if_exists='replace')
 
 
-conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a',autocommit=True)
+conn = pyodbc.connect('DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword',autocommit=True)
 crsr = conn.cursor()
 #rows = crsr.execute("use movies")
 #rows = crsr.execute("CREATE TABLE tbl2(MyID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, MyVal VARCHAR(50))")
@@ -49,7 +49,7 @@ conn.close()
 #os.environ
 
 #stagetablename = "tblMovie"
-#connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a'
+#connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword'
 #params=stagetablename
 #conn = pyodbc.connect(connectionstring, autocommit=True)
 #crsr = conn.cursor()

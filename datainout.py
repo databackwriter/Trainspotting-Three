@@ -45,7 +45,7 @@ def treatuserfile(userstrainingdata):
 
 
 #function to check if a table exists
-def tableexists(stagetablename ,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a'):
+def tableexists(stagetablename ,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword'):
     extant = False
     params=stagetablename
     conn = pyodbc.connect(connectionstring, autocommit=True)
@@ -59,7 +59,7 @@ def tableexists(stagetablename ,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=
 
 
 #function to check if a field exists
-def fieldexists(stagetablename, stagefieldname,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a'):
+def fieldexists(stagetablename, stagefieldname,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword'):
     extant = False
     params=[stagetablename, stagefieldname]
     conn = pyodbc.connect(connectionstring, autocommit=True)
@@ -76,7 +76,7 @@ def fieldexists(stagetablename, stagefieldname,connectionstring='DSN=MYMSSQL_MOV
 
 def loadtosqlstage(df,
                    stagetablename,
-                   connectionstring="mssql+pyodbc://sa:l00katy0urd%t%a@MYMSSQL_Movies",
+                   connectionstring="mssql+pyodbc://sa:notapassword@MYMSSQL_Movies",
                    ifexists='replace',
                    index=False,
                    indexlabel=None,
@@ -94,7 +94,7 @@ def loadtosqlstage(df,
 
 #function to run SQL from a text file
 #indirectly inspired by: https://stackoverflow.com/questions/38856534/execute-sql-file-with-multiple-statements-separated-by-using-pyodbc
-def runsqltxt(script,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a'):
+def runsqltxt(script,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword'):
     conn = pyodbc.connect(connectionstring, autocommit=True)
     with open(script,'r') as actions:
         sqlScript = actions.read()
@@ -107,7 +107,7 @@ def runsqltxt(script,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd
 
 #function to make a dataframe from a sql startement
 #indirectly inspired by: https://stackoverflow.com/questions/39835770/move-data-from-pyodbc-to-pandas
-def sqldf(sql,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=l00katy0urd%t%a'):
+def sqldf(sql,connectionstring='DSN=MYMSSQL_MOVIES;UID=sa;PWD=notapassword'):
     conn = pyodbc.connect(connectionstring, autocommit=True)
     df = pd.read_sql(sql,conn)
     return df

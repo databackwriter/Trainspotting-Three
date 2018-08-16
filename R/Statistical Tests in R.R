@@ -6,7 +6,7 @@ con <- dbConnect(odbc(),
                  Server = "10.37.129.10",
                  Database = "Movies",
                  UID = "sa",
-                 PWD = "l00katy0urd%t%a",
+                 PWD = "notapassword",
                  Port = 5171)
 
 result <- dbSendQuery(con, "EXEC dbo.usp_PM_XTab_GenderxGenre")
