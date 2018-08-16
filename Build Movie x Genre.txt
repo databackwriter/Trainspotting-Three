@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS dbo.tblGenre;
+SELECT DISTINCT
+       IDENTITY(INT, 1, 1) AS GenreID
+     , ulsd.value AS Genre
+INTO dbo.tblGenre
+FROM tblMovie m
+    CROSS APPLY STRING_SPLIT(m.Genres, '|') AS ulsd;
+
+DROP TABLE IF EXISTS dbo.tblMoviexGenre;
+SELECT IDENTITY(INT, 1, 1) AS MoviexGenreID
+     , m.MovieID
+     , g2.GenreID
+INTO dbo.tblMoviexGenre
+FROM dbo.tblMovie m
+    CROSS APPLY STRING_SPLIT(m.Genres, '|') AS ulsd
+    INNER JOIN dbo.tblGenre AS g2
+        ON ulsd.value = g2.Genre
+ORDER BY m.MovieID
+       , g2.GenreID;
+
